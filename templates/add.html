@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <title>Document</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <style>
+        a{
+            text-decoration: none;
+        }
+        body{
+            background-color: wheat;
+        }
+    </style>
+<body>
+    <h1 class="text-center my-3">Add student details</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <form action="{% url 'addstudentdetails' %}" method="POST"enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <img src="c:\Users\LENOVO\OneDrive\Pictures\Default_pfp.svg.png" alt="">
+                            <div class="mb-3">
+                              <label for="name">First Name</label>
+                              <input
+                                id="id1"type="text"class="form-control"placeholder="firstname"name="firstname"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Last Name</label>
+                                <input
+                                  id="id2"type="text"class="form-control"placeholder="lastname"name="lastname"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Contact</label>
+                                <input
+                                  id="id3"type="text"class="form-control"placeholder="phonenumber"name="contact"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Email</label>
+                                <input
+                                  id="id4"type="text"class="form-control"placeholder="email"name="email"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Course</label>
+                                <select name="course" id="id5" class="form-control"type="text">
+                                    <option value="">select course</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                    <option value="Electrical Engineering">Electrical Engineering</option>
+                                    <option value="Civil Engineering">Civil Engineering</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Address</label>
+                                <textarea name="address"id="id6"rows="5"class="form-control" ></textarea>
+                            </div>
+                            <div>
+                                <label for="image">profile picture</label>
+                                <input type="file" name="file" class="form-control mt-3" accept="image/*">
+                            </div><br><br>
+                            <div class="container text-center">
+                                <button class="btn text-dark bg-white">Add student</button><br><br>
+                                <button><a type="button" href="{% url 'showstudent' %}"></a>go to student details</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>

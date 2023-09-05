@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <title>Document</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <style>
+        input{
+            width: 200px;
+        }
+        #id7{
+            width: 78px;
+            background-color: black;
+            color: white;
+        }
+        #id9{
+            margin-left: 366px;
+        }
+        #id8{
+            margin-left: 350px;
+            width: 75px;
+        }
+        #id10{
+            font-size: xx-large;
+        }
+        #img1{
+            margin-top: 10px;
+        }
+        .img-icons {
+            height: 120px;
+            width: auto;
+            background-color: #f8f8ec;
+            border: 2px solid #e97117;
+            padding: -1em;
+            border-radius: 10%;
+
+        }
+        
+
+    </style>
+<body>
+    <div class="bg-primary">
+    <h1 class="text-center my-3 text-dark">Student details</h1>
+    <div class="container bg-lightgrey"id="idl">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card bg-success text-white"style="width: 850px;">
+                    <div class="card-body">
+                        <form action="/edit2sdtdetails/{{students.id}}" method="POST"enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if students.image %}
+                            <img src="{{ students.image.url }}"width="100px" height="100px"></img>
+                            {%else%}
+                            <img class="img-fluid" src="{% static 'images/pic1.png' %}" alt=""width="100px" height="100px"><br>
+                            {%endif%} 
+                            <button ><a class="btn btn-danger" href="{% url 'delete' students.pk %}">remove image</a></button><br><br><br>
+                            <div class="mb-3">
+                              <label for="name">First Name</label>
+                              <input
+                                id="id1"type="text"class="form-control"placeholder="firstName"name="firstname"value="{{students.firstname}}"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Last Name</label>
+                                <input
+                                  id="id2"type="text"class="form-control"placeholder="lastName"name="lastname"value="{{students.lastname}}"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Contact</label>
+                                <input
+                                  id="id3"type="text"class="form-control"placeholder="phonenumber"name="contact"value="{{students.contact}}"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Email</label>
+                                <input
+                                  id="id4"type="text"class="form-control"placeholder="email"name="email"value="{{students.email}}"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Course</label>
+                                <input type="text"class="form-control" name="course" id=""value="{{students.course}}"/>
+                            </div>
+                            <div class="mb-3">
+                                <label for="name">Address</label>
+                                <textarea name="address"id="id6"rows="5"class="form-control">{{students.address}}</textarea>
+                            </div>
+                            <div>
+                                <label for="image">profile picture</label>
+                                <input type="file" name="file" class="form-control mt-3" accept="image/*" >
+                            </div><br>
+                            <div>
+                                <button class="btn btn-primary"><a href="{% url 'showstudent' %}"></a>Go back</button>
+                            </div>
+                            <div class="col">
+                                <input class="btn btn-outline-warning" type="submit" value="update"id="id8">  
+                            </div><br>
+                            <div>
+                                <button id="id9" type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#main-modal">delete</button>
+                            <!-- delete modal -->
+                            <div class="modal fade" id="main-modal" tabindex="-1"> 
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header"id="modal-header">
+                                            <h1 class="modal-title " id="modal-title">confirmation</h1>
+                                            <button type="button" class="close" data-dismiss="modal" >
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <label for="">Do you want to delete?</label>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href=""id="id10">Do you want to delete?</a>
+                                            <a type="button" class="btn btn-primary"href="{% url 'deletestudent' students.id %}">Yes</a>
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- delete modal end -->
+                        </form><br>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+</body>
+</html>

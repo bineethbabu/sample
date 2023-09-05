@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      {% load static %}
+        <title>Document</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <style>
+       body{
+            background-color: wheat;
+        }
+    </style>
+<body>
+    <h1 class="text-center my-3">Student Table</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Fisrtname</th>
+                    <th>lastname</th>
+                    <th>Contact</th>
+                    <th>Course</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for s in students %}
+                  <tr>
+                    <td></a>{{s.id}}</td>
+                    <td><a href="{% url 'proflpage' s.id %}">{{s.firstname}}</a></td>
+                    <td>{{s.lastname}}</td>
+                    <td>{{s.contact}}</td>
+                    <td>{{s.course}}</td>
+                  </tr>
+                  {%endfor%}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div><br>
+    <center> <button><a href="{% url 'addstudent' %}">Go Back</a></button></center>
+</body>
+</html>
